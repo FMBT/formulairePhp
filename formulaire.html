@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>formulaire de contacte</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<h1>formulaire de contact</h1>
+	<form onsubmit="validation();" class="form" method="POST" action="fatoumta.php">
+		<fieldset id="section">
+			<legend>Information personelles</legend>
+			Sexe ?<br>
+			<input type="radio" id="homme" name="sexe" value="homme">
+			<label for="homme"> Un homme</label><br>
+
+			<input type="radio" id="femme" name="sexe" value="femme" >
+			<label for="femme"> Une femme</label><br>
+
+			<label for="prenom"> Entrez votre prenom</label>
+			<input type="text" id="prenom" name="prenom"  maxlength="20"><span id="prenom_manquant"></span><br>
+
+			<label for="nom"> Entrer votre nom</label>
+			<input type="text" id="nom" name="nom" ><br>
+
+			<label for="email"> Entrer votre email</label>
+			<input type="email" id="email" name="email" ><br>
+
+			Quel(s) sport pratiquez vous?<br>
+			<input type="checkbox" name="sport" value="natation" id="natation">
+			<label for="natation"> Natation</label><br>
+			<input type="checkbox" name="sport" value="velo" id="velo">
+			<label for="velo"> Velo</label><br>
+			<input type="checkbox" name="sport" value="course" id="course">
+			<label for="course"> Course à pied</label><br>
+
+			Oû habitez vous?<br>
+			<select name="pays">
+				<optgroup label="Afrique">
+					<option value="senegal">Senegal</option>
+					<option value="mali">Mali</option>
+					<option value="maurtanie">Mauritanie</option>
+				</optgroup>
+				<optgroup label="Europe">
+					<option value="france">France</option>
+					<option value="belgique">Belgique</option>
+					<option value="allemagne">Allemagne</option>
+				</optgroup>
+				<optgroup label="Amerique">
+					<option value="canada">Canada</option>
+					<option value="mexique">Mexique</option>
+					<option value="newyork">New-York</option>
+				</optgroup>
+				
+			</select>
+			<br><br>
+
+
+
+			
+
+			<label for="prez"> Un commentaire ?</label>
+			<textarea id="prez" name="presentation"></textarea><br>
+		</fieldset>
+
+		<input type="submit" value="valider" id="bouton_envoi" onclick="f_valid()">
+	</form>
+	<script>
+		var formvalid=document.getElementById('bouton_envoi');
+		var prenom=document.getElementById("prenom");
+		var prenom_manquant=document.getElementById("prenom_manquant");
+		var nom=document.getElementById("nom");
+		var manquant ='remplir les champs suivants: \n'
+		// var prenom_m=document.getElementById("pernom_manquant");
+		//validation.addEventlistener("click",f_valid());
+
+		function f_valid(){
+			if (nom.value=="") {
+				manquant+="nom \n ";
+			}
+			if (prenom.value=="") {
+				manquant+="prenom \n";
+			}
+			if (nom.value==""|| prenom.value=="") 
+			{
+			alert(manquant);}
+
+			}
+
+			formvalid.addEventlistener('click', validation);
+
+			function validation(event){
+			if(prenom.validity.valueMissing){
+				event.preventDefault();
+				prenom_manquant.textContent = 'prénom manquant';
+				prenom_manquant.style.color = 'red';
+			}
+			else{}
+			}
+		
+
+	</script>
+
+	
+
+</body>
+</html>
